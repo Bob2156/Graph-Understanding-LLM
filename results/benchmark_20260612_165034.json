@@ -1,0 +1,138 @@
+{
+  "metadata": {
+    "timestamp": "2026-06-12T23:50:34.515049+00:00",
+    "config": {
+      "graph_sizes": [
+        10
+      ],
+      "graph_types": [
+        "erdos_renyi"
+      ],
+      "serialization_formats": [
+        "adjacency_list"
+      ],
+      "tasks": [
+        "node_degree",
+        "edge_existence",
+        "shortest_path",
+        "connectivity",
+        "cycle_detection"
+      ],
+      "models": [
+        "local"
+      ],
+      "num_trials": 1,
+      "seed": 42,
+      "dry_run": false
+    },
+    "total_results": 5
+  },
+  "results": [
+    {
+      "id": 1,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "node_degree",
+      "task_params": {
+        "node": 1
+      },
+      "ground_truth": 5,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: What is the degree of node 1?\n\nPlease provide your answer concisely.",
+      "response": null,
+      "evaluation": null,
+      "status": "error: 'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"
+    },
+    {
+      "id": 2,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "edge_existence",
+      "task_params": {
+        "node_a": 1,
+        "node_b": 0
+      },
+      "ground_truth": false,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: Is there an edge between node 1 and node 0? Answer yes or no.\n\nPlease provide your answer concisely.",
+      "response": null,
+      "evaluation": null,
+      "status": "error: 'charmap' codec can't encode character '\\u2713' in position 0: character maps to <undefined>"
+    },
+    {
+      "id": 3,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "shortest_path",
+      "task_params": {
+        "node_a": 1,
+        "node_b": 0
+      },
+      "ground_truth": 2,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: What is the shortest path length from node 1 to node 0? If there is no path, answer -1.\n\nPlease provide your answer concisely.",
+      "response": null,
+      "evaluation": null,
+      "status": "error: 'charmap' codec can't encode character '\\u2717' in position 0: character maps to <undefined>"
+    },
+    {
+      "id": 4,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "connectivity",
+      "task_params": {
+        "node_a": 1,
+        "node_b": 0
+      },
+      "ground_truth": true,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: Are node 1 and node 0 connected (i.e., is there a path between them)? Answer yes or no.\n\nPlease provide your answer concisely.",
+      "response": null,
+      "evaluation": null,
+      "status": "error: 'charmap' codec can't encode character '\\u2713' in position 0: character maps to <undefined>"
+    },
+    {
+      "id": 5,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "cycle_detection",
+      "task_params": {},
+      "ground_truth": true,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: Does this graph contain a cycle? Answer yes or no.\n\nPlease provide your answer concisely.",
+      "response": null,
+      "evaluation": null,
+      "status": "error: 'charmap' codec can't encode character '\\u2713' in position 0: character maps to <undefined>"
+    }
+  ]
+}

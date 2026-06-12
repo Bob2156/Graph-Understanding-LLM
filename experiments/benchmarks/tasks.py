@@ -46,11 +46,30 @@ class GraphTask:
 # ---------------------------------------------------------------------------
 
 def _parse_integer(text: str) -> Optional[int]:
-    """Extract the first integer from a text response."""
-    # Try to find a standalone number (possibly negative)
+    """Extract the answer integer from a text response.
+
+    Strategy:
+    1. Look for explicit 'final answer' patterns
+    2. Look for bold/formatted answers at the end
+    3. Fall back to the last integer in the response
+    """
+    # 1. Look for "Final Answer: X" or "Answer: X" patterns
+    final_match = re.search(
+        r"(?:final\s+answer|answer)\s*[:=]\s*\**\s*(-?\d+)",
+        text, re.IGNORECASE,
+    )
+    if final_match:
+        return int(final_match.group(1))
+
+    # 2. Look for bold number at the end (e.g., "**5**" or "**2**")
+    bold_match = re.search(r"\*\*(-?\d+)\*\*\s*$", text.strip())
+    if bold_match:
+        return int(bold_match.group(1))
+
+    # 3. Fall back to last standalone integer in the response
     matches = re.findall(r"-?\d+", text)
     if matches:
-        return int(matches[0])
+        return int(matches[-1])
     return None
 
 

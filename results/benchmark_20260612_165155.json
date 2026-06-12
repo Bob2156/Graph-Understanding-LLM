@@ -1,0 +1,163 @@
+{
+  "metadata": {
+    "timestamp": "2026-06-12T23:51:55.114445+00:00",
+    "config": {
+      "graph_sizes": [
+        10
+      ],
+      "graph_types": [
+        "erdos_renyi"
+      ],
+      "serialization_formats": [
+        "adjacency_list"
+      ],
+      "tasks": [
+        "node_degree",
+        "edge_existence",
+        "shortest_path",
+        "connectivity",
+        "cycle_detection"
+      ],
+      "models": [
+        "local"
+      ],
+      "num_trials": 1,
+      "seed": 42,
+      "dry_run": false
+    },
+    "total_results": 5
+  },
+  "results": [
+    {
+      "id": 1,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "node_degree",
+      "task_params": {
+        "node": 1
+      },
+      "ground_truth": 5,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: What is the degree of node 1?\n\nPlease provide your answer concisely.",
+      "response": "The degree of a node is the number of edges connected to it, which corresponds to the number of neighbors listed in its adjacency list.\n\nFor **Node 1**, the provided list of neighbors is: `[2, 3, 5, 6, 9]`.\n\nCounting the elements in this list:\n1. 2\n2. 3\n3. 5\n4. 6\n5. 9\n\nThere are 5 neighbors.\n\n**Final Answer:** 5",
+      "evaluation": {
+        "correct": false,
+        "expected": 5,
+        "parsed": 1,
+        "raw_response": "The degree of a node is the number of edges connected to it, which corresponds to the number of neighbors listed in its adjacency list.\n\nFor **Node 1**, the provided list of neighbors is: `[2, 3, 5, 6, 9]`.\n\nCounting the elements in this list:\n1. 2\n2. 3\n3. 5\n4. 6\n5. 9\n\nThere are 5 neighbors.\n\n**Final Answer:** 5"
+      },
+      "status": "success"
+    },
+    {
+      "id": 2,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "edge_existence",
+      "task_params": {
+        "node_a": 1,
+        "node_b": 0
+      },
+      "ground_truth": false,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: Is there an edge between node 1 and node 0? Answer yes or no.\n\nPlease provide your answer concisely.",
+      "response": " No",
+      "evaluation": {
+        "correct": true,
+        "expected": false,
+        "parsed": false,
+        "raw_response": " No"
+      },
+      "status": "success"
+    },
+    {
+      "id": 3,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "shortest_path",
+      "task_params": {
+        "node_a": 1,
+        "node_b": 0
+      },
+      "ground_truth": 2,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: What is the shortest path length from node 1 to node 0? If there is no path, answer -1.\n\nPlease provide your answer concisely.",
+      "response": "To find the shortest path length from node 1 to node 0, we analyze the connections:\n\n1.  **Direct Connection**: Check if node 0 is in the neighbor list of node 1.\n    *   Node 1 neighbors: `[2, 3, 5, 6, 9]`\n    *   Node 0 is **not** in this list. So, the distance is not 1.\n\n2.  **Path of Length 2**: Check neighbors of node 1 to see if any connect directly to node 0.\n    *   Neighbors of 1: 2, 3, 5, 6, 9.\n    *   Check neighbors of each:\n        *   Node 2 neighbors: `[0, 1, 5, 9]` -> Contains **0**.\n        *   Node 3 neighbors: `[0, 1, 6, 7]` -> Contains **0**.\n        *   Node 5 neighbors: `[1, 2]` -> No 0.\n        *   Node 6 neighbors: `[1, 3, 9]` -> No 0.\n        *   Node 9 neighbors: `[1, 2, 6, 7, 8]` -> No 0.\n    *   Since nodes 2 and 3 connect to 0, paths like $1 \\to 2 \\to 0$ and $1 \\to 3 \\to 0$ exist.\n    *   Length of these paths is 2.\n\nSince a direct path doesn't exist, but paths of length 2 do, the shortest path length is 2.\n\n**2**",
+      "evaluation": {
+        "correct": false,
+        "expected": 2,
+        "parsed": 1,
+        "raw_response": "To find the shortest path length from node 1 to node 0, we analyze the connections:\n\n1.  **Direct Connection**: Check if node 0 is in the neighbor list of node 1.\n    *   Node 1 neighbors: `[2, 3, 5, 6, 9]`\n    *   Node 0 is **not** in this list. So, the distance is not 1.\n\n2.  **Path of Length 2**: Check neighbors of node 1 to see if any connect directly to node 0.\n    *   Neighbors of 1: 2, 3, 5, 6, 9.\n    *   Check neighbors of each:\n        *   Node 2 neighbors: `[0, 1, 5, 9]` -> Contains **0**.\n        *   Node 3 neighbors: `[0, 1, 6, 7]` -> Contains **0**.\n        *   Node 5 neighbors: `[1, 2]` -> No 0.\n        *   Node 6 neighbors: `[1, 3, 9]` -> No 0.\n        *   Node 9 neighbors: `[1, 2, 6, 7, 8]` -> No 0.\n    *   Since nodes 2 and 3 connect to 0, paths like $1 \\to 2 \\to 0$ and $1 \\to 3 \\to 0$ exist.\n    *   Length of these paths is 2.\n\nSince a direct path doesn't exist, but paths of length 2 do, the shortest path length is 2.\n\n**2**"
+      },
+      "status": "success"
+    },
+    {
+      "id": 4,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "connectivity",
+      "task_params": {
+        "node_a": 1,
+        "node_b": 0
+      },
+      "ground_truth": true,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: Are node 1 and node 0 connected (i.e., is there a path between them)? Answer yes or no.\n\nPlease provide your answer concisely.",
+      "response": " Yes",
+      "evaluation": {
+        "correct": true,
+        "expected": true,
+        "parsed": true,
+        "raw_response": " Yes"
+      },
+      "status": "success"
+    },
+    {
+      "id": 5,
+      "graph_type": "erdos_renyi",
+      "n_nodes": 10,
+      "actual_nodes": 10,
+      "actual_edges": 17,
+      "format": "adjacency_list",
+      "token_count": 54,
+      "task": "cycle_detection",
+      "task_params": {},
+      "ground_truth": true,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [2, 3, 4, 8]\nNode 1: [2, 3, 5, 6, 9]\nNode 2: [0, 1, 5, 9]\nNode 3: [0, 1, 6, 7]\nNode 4: [0]\nNode 5: [1, 2]\nNode 6: [1, 3, 9]\nNode 7: [3, 8, 9]\nNode 8: [0, 7, 9]\nNode 9: [1, 2, 6, 7, 8]\n\nQuestion: Does this graph contain a cycle? Answer yes or no.\n\nPlease provide your answer concisely.",
+      "response": " Yes",
+      "evaluation": {
+        "correct": true,
+        "expected": true,
+        "parsed": true,
+        "raw_response": " Yes"
+      },
+      "status": "success"
+    }
+  ]
+}

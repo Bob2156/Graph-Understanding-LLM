@@ -223,7 +223,7 @@ class BenchmarkRunner:
             model_name = model.split(":", 1)[1]
         if not model_name:
             # LM Studio uses whatever model is loaded
-            model_name = "qwen3.5-9b"
+            model_name = "qwen/qwen3.5-9b"
 
         client = openai.OpenAI(
             base_url=base_url,
@@ -384,9 +384,8 @@ class BenchmarkRunner:
                                         result_entry["response"] = response
                                         result_entry["evaluation"] = evaluation
                                         result_entry["status"] = "success"
-                                        print(
-                                            f"{'✓' if evaluation['correct'] else '✗'}"
-                                        )
+                                        mark = "PASS" if evaluation['correct'] else "FAIL"
+                                        print(f"[{mark}]")
 
                                         # Rate limiting
                                         time.sleep(
