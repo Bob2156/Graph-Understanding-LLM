@@ -1,0 +1,180 @@
+======================================================================
+SMOKE TEST — Graph Experiment Infrastructure
+======================================================================
+
+1. GRAPH GENERATION
+----------------------------------------
+   Generated Erdős-Rényi graph: 10 nodes, 17 edges
+   Available graph types: ['erdos_renyi', 'barabasi_albert', 'watts_strogatz', 'complete', 'tree', 'grid', 'bipartite', 'path', 'cycle']
+
+   All graph types at n=10:
+     erdos_renyi         : 10 nodes, 17 edges
+     barabasi_albert     : 10 nodes, 21 edges
+     watts_strogatz      : 10 nodes, 20 edges
+     complete            : 10 nodes, 45 edges
+     tree                : 10 nodes, 9 edges
+     grid                : 12 nodes, 17 edges
+     bipartite           : 10 nodes, 14 edges
+     path                : 10 nodes, 9 edges
+     cycle               : 10 nodes, 10 edges
+
+2. SERIALIZATION FORMATS
+----------------------------------------
+
+   === adjacency_list (54 tokens, 191 chars) ===
+   Node 0: [2, 3, 4, 8]
+   Node 1: [2, 3, 5, 6, 9]
+   Node 2: [0, 1, 5, 9]
+   Node 3: [0, 1, 6, 7]
+   Node 4: [0]
+   Node 5: [1, 2]
+   Node 6: [1, 3, 9]
+   Node 7: [3, 8, 9]
+   Node 8: [0, 7, 9]
+   Node 9: [1, 2, 6, 7, 8]
+
+   === edge_list (34 tokens, 118 chars) ===
+   (0, 2)
+   (0, 3)
+   (0, 4)
+   (0, 8)
+   (1, 2)
+   (1, 3)
+   (1, 5)
+   (1, 6)
+   (1, 9)
+   (2, 5)
+   (2, 9)
+   (3, 6)
+   (3, 7)
+   (6, 9)
+   (7, 8)
+   (7, 9)
+   (8, 9)
+
+   === natural_language (127 tokens, 536 chars) ===
+   Node 0 is connected to Node 2, Node 3, Node 4, and Node 8.
+   Node 1 is connected to Node 2, Node 3, Node 5, Node 6, and Node 9.
+   Node 2 is connected to Node 0, Node 1, Node 5, and Node 9.
+   Node 3 is conne
+      ...
+
+   === dot (55 tokens, 181 chars) ===
+   graph G {
+     0 -- 2;
+     0 -- 3;
+     0 -- 4;
+     0 -- 8;
+     1 -- 2;
+     1 -- 3;
+     1 -- 5;
+     1 -- 6;
+     1 -- 9;
+     2 -- 5;
+     2 -- 9;
+     3 -- 6;
+     3 -- 7;
+     6 -- 9;
+     7 -- 8;
+     7 -- 9;
+     8 -- 9;
+   }
+
+   === adjacency_matrix (120 tokens, 471 chars) ===
+       0   1   2   3   4   5   6   7   8   9
+    0   0   0   1   1   1   0   0   0   1   0
+    1   0   0   1   1   0   1   1   0   0   1
+    2   1   1   0   0   0   1   0   0   0   1
+    3   1   1   0   0   0   0   
+      ...
+
+   === graphml (80 tokens, 924 chars) ===
+   <?xml version="1.0" encoding="UTF-8"?>
+   <graphml>
+     <graph id="G" edgedefault="undirected">
+       <node id="n0"/>
+       <node id="n1"/>
+       <node id="n2"/>
+       <node id="n3"/>
+       <node id="n4"/>
+       <node
+      ...
+
+3. GROUND TRUTH STATISTICS
+----------------------------------------
+   node_count          : 10
+   edge_count          : 17
+   is_connected        : True
+   has_cycle           : True
+   diameter            : 3
+   average_degree      : 3.4
+   max_degree          : 5
+   min_degree          : 1
+   triangle_count      : 5
+
+4. TASK EXECUTION
+----------------------------------------
+
+   Task: node_degree
+   Params: {'node': 1}
+   Ground truth: 5
+   Simulated response: '5'
+   Evaluation: correct=True, parsed=5
+
+   Task: edge_existence
+   Params: {'node_a': 1, 'node_b': 0}
+   Ground truth: False
+   Simulated response: 'No'
+   Evaluation: correct=True, parsed=False
+
+   Task: neighbor_listing
+   Params: {'node': 1}
+   Ground truth: [2, 3, 5, 6, 9]
+   Simulated response: '2, 3, 5, 6, 9'
+   Evaluation: correct=True, parsed=[2, 3, 5, 6, 9]
+
+   Task: shortest_path
+   Params: {'node_a': 1, 'node_b': 0}
+   Ground truth: 2
+   Simulated response: '2'
+   Evaluation: correct=True, parsed=2
+
+   Task: connectivity
+   Params: {'node_a': 1, 'node_b': 0}
+   Ground truth: True
+   Simulated response: 'Yes'
+   Evaluation: correct=True, parsed=True
+
+   Task: cycle_detection
+   Params: {}
+   Ground truth: True
+   Simulated response: 'Yes'
+   Evaluation: correct=True, parsed=True
+
+   Task: triangle_counting
+   Params: {}
+   Ground truth: 5
+   Simulated response: '5'
+   Evaluation: correct=True, parsed=5
+
+   Task: graph_diameter
+   Params: {}
+   Ground truth: 3
+   Simulated response: '3'
+   Evaluation: correct=True, parsed=3
+
+   Task: node_count
+   Params: {}
+   Ground truth: 10
+   Simulated response: '10'
+   Evaluation: correct=True, parsed=10
+
+   Task: edge_count
+   Params: {}
+   Ground truth: 17
+   Simulated response: '17'
+   Evaluation: correct=True, parsed=17
+
+======================================================================
+SMOKE TEST PASSED ✓
+======================================================================
