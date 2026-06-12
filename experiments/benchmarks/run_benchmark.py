@@ -68,8 +68,17 @@ class BenchmarkRunner:
                 experimental grid.
     """
 
-    def __init__(self, config: Optional[ExperimentConfig] = None) -> None:
+    def __init__(
+        self,
+        config: Optional[ExperimentConfig] = None,
+        local_url: Optional[str] = None,
+        local_model_name: Optional[str] = None,
+    ) -> None:
         self.config = config or DEFAULT_CONFIG
+        if local_url:
+            self.config.local_url = local_url  # type: ignore[attr-defined]
+        if local_model_name:
+            self.config.local_model_name = local_model_name  # type: ignore[attr-defined]
         self._setup_results_dir()
 
     # ------------------------------------------------------------------
@@ -103,6 +112,8 @@ class BenchmarkRunner:
             return self._call_anthropic(model, prompt)
         elif model.startswith("gemini"):
             return self._call_gemini(model, prompt)
+        elif model == "local" or model.startswith("local:"):
+            return self._call_local(model, prompt)
         else:
             raise ValueError(f"Unknown model provider for '{model}'")
 
@@ -189,6 +200,52 @@ class BenchmarkRunner:
         )
         response = model_obj.generate_content(prompt)
         return response.text
+
+    def _call_local(
+        self, model: str, prompt: str,
+    ) -> str:
+        """Call a local model via OpenAI-compatible API (e.g., LM Studio).
+
+        Args:
+            model: Either ``"local"`` or ``"local:<model-name>"``.
+            prompt: The user prompt.
+
+        Returns:
+            The model's response text.
+        """
+        if not _HAS_OPENAI:
+            raise ImportError(
+                "openai package not installed. Run: pip install openai"
+            )
+        base_url = getattr(self.config, "local_url", "http://localhost:1234/v1")
+        model_name = getattr(self.config, "local_model_name", "")
+        if model.startswith("local:"):
+            model_name = model.split(":", 1)[1]
+        if not model_name:
+            # LM Studio uses whatever model is loaded
+            model_name = "qwen3.5-9b"
+
+        client = openai.OpenAI(
+            base_url=base_url,
+            api_key="lm-studio",  # LM Studio ignores the key
+        )
+        response = client.chat.completions.create(
+            model=model_name,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a graph theory expert. Answer the question "
+                        "about the given graph concisely and precisely. "
+                        "Give your final answer clearly."
+                    ),
+                },
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0.0,
+            max_tokens=512,
+        )
+        return response.choices[0].message.content or ""
 
     def _call_with_retry(self, model: str, prompt: str) -> str:
         """Call LLM with exponential-backoff retry logic.
@@ -468,6 +525,16 @@ def main() -> None:
         help="Path to a JSON config file.",
     )
     parser.add_argument(
+        "--local-url",
+        default="http://localhost:1234/v1",
+        help="Base URL for local model API (default: http://localhost:1234/v1).",
+    )
+    parser.add_argument(
+        "--local-model-name",
+        default="qwen3.5-9b",
+        help="Model name for local server (default: qwen3.5-9b).",
+    )
+    parser.add_argument(
         "--num-trials",
         type=int,
         default=None,
@@ -503,7 +570,11 @@ def main() -> None:
         config.num_trials = args.num_trials
 
     # Run
-    runner = BenchmarkRunner(config)
+    runner = BenchmarkRunner(
+        config,
+        local_url=args.local_url,
+        local_model_name=args.local_model_name,
+    )
     results = runner.run()
     runner.save_results(results)
 
