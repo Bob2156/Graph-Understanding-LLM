@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "timestamp": "2026-06-13T00:09:00.497116+00:00",
+    "config": {
+      "graph_sizes": [
+        200
+      ],
+      "graph_types": [
+        "tree"
+      ],
+      "serialization_formats": [
+        "adjacency_list"
+      ],
+      "tasks": [
+        "node_degree",
+        "edge_existence",
+        "shortest_path"
+      ],
+      "models": [
+        "local"
+      ],
+      "num_trials": 1,
+      "seed": 42,
+      "dry_run": false
+    },
+    "total_results": 3
+  },
+  "results": [
+    {
+      "id": 1,
+      "graph_type": "tree",
+      "n_nodes": 200,
+      "actual_nodes": 200,
+      "actual_edges": 199,
+      "format": "adjacency_list",
+      "token_count": 798,
+      "task": "node_degree",
+      "task_params": {
+        "node": 163
+      },
+      "ground_truth": 4,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [116, 184]\nNode 1: [79, 194]\nNode 2: [141, 174]\nNode 3: [163]\nNode 4: [28]\nNode 5: [6]\nNode 6: [5, 52, 143]\nNode 7: [23, 44]\nNode 8: [42, 58, 80]\nNode 9: [189]\nNode 10: [70]\nNode 11: [17, 107, 169]\nNode 12: [28, 183]\nNode 13: [62]\nNode 14: [58, 166]\nNode 15: [57]\nNode 16: [98, 170, 190]\nNode 17: [11, 131]\nNode 18: [151, 155]\nNode 19: [35]\nNode 20: [59, 74, 96]\nNode 21: [188]\nNode 22: [37, 151]\nNode 23: [7, 26, 126, 193]\nNode 24: [91, 105]\nNode 25: [59, 97]\nNode 26: [23, 30, 86]\nNode 27: [160, 198]\nNode 28: [4, 12, 75, 87]\nNode 29: [174, 193]\nNode 30: [26]\nNode 31: [96, 114]\nNode 32: [173]\nNode 33: [189]\nNode 34: [139]\nNode 35: [19, 56, 130, 176]\nNode 36: [67, 117]\nNode 37: [22]\nNode 38: [108]\nNode 39: [50, 95, 99, 185]\nNode 40: [81, 111, 116, 187]\nNode 41: [62, 93, 118]\nNode 42: [8]\nNode 43: [136, 154]\nNode 44: [7]\nNode 45: [129, 197]\nNode 46: [55]\nNode 47: [59]\nNode 48: [129]\nNode 49: [125, 180]\nNode 50: [39, 57, 155]\nNode 51: [154]\nNode 52: [6]\nNode 53: [90, 171]\nNode 54: [80, 167, 171]\nNode 55: [46, 100, 195]\nNode 56: [35, 72, 92, 142]\nNode 57: [15, 50]\nNode 58: [8, 14, 132]\nNode 59: [20, 25, 47]\nNode 60: [183]\nNode 61: [166]\nNode 62: [13, 41, 156]\nNode 63: [177, 190]\nNode 64: [135, 141]\nNode 65: [179]\nNode 66: [139]\nNode 67: [36, 106, 128, 179, 184]\nNode 68: [146, 169, 192, 196]\nNode 69: [157, 163]\nNode 70: [10, 107]\nNode 71: [78, 89, 116, 138]\nNode 72: [56]\nNode 73: [114]\nNode 74: [20, 134]\nNode 75: [28, 111, 120]\nNode 76: [160, 163]\nNode 77: [150]\nNode 78: [71]\nNode 79: [1]\nNode 80: [8, 54, 173]\nNode 81: [40]\nNode 82: [178]\nNode 83: [162, 196]\nNode 84: [108]\nNode 85: [87]\nNode 86: [26, 103]\nNode 87: [28, 85, 164]\nNode 88: [91, 154]\nNode 89: [71]\nNode 90: [53, 94]\nNode 91: [24, 88]\nNode 92: [56, 102, 123]\nNode 93: [41, 140]\nNode 94: [90, 144]\nNode 95: [39, 195]\nNode 96: [20, 31]\nNode 97: [25, 98, 104, 118, 152]\nNode 98: [16, 97]\nNode 99: [39]\nNode 100: [55]\nNode 101: [127, 164]\nNode 102: [92, 149, 168]\nNode 103: [86]\nNode 104: [97]\nNode 105: [24]\nNode 106: [67]\nNode 107: [11, 70]\nNode 108: [38, 84, 152, 189]\nNode 109: [149, 182]\nNode 110: [186]\nNode 111: [40, 75]\nNode 112: [117]\nNode 113: [137]\nNode 114: [31, 73]\nNode 115: [141]\nNode 116: [0, 40, 71]\nNode 117: [36, 112, 175]\nNode 118: [41, 97]\nNode 119: [135, 152]\nNode 120: [75]\nNode 121: [160]\nNode 122: [158]\nNode 123: [92]\nNode 124: [147]\nNode 125: [49]\nNode 126: [23, 130]\nNode 127: [101, 167]\nNode 128: [67, 195]\nNode 129: [45, 48, 155, 163]\nNode 130: [35, 126]\nNode 131: [17]\nNode 132: [58]\nNode 133: [197]\nNode 134: [74]\nNode 135: [64, 119]\nNode 136: [43, 186]\nNode 137: [113, 143, 174, 192]\nNode 138: [71]\nNode 139: [34, 66, 162]\nNode 140: [93]\nNode 141: [2, 64, 115]\nNode 142: [56, 159]\nNode 143: [6, 137, 178]\nNode 144: [94]\nNode 145: [172, 183]\nNode 146: [68]\nNode 147: [124, 179]\nNode 148: [174]\nNode 149: [102, 109, 181]\nNode 150: [77, 165]\nNode 151: [18, 22]\nNode 152: [97, 108, 119]\nNode 153: [162]\nNode 154: [43, 51, 88]\nNode 155: [18, 50, 129]\nNode 156: [62]\nNode 157: [69]\nNode 158: [122, 176]\nNode 159: [142]\nNode 160: [27, 76, 121, 186]\nNode 161: [175]\nNode 162: [83, 139, 153]\nNode 163: [3, 69, 76, 129]\nNode 164: [87, 101, 194]\nNode 165: [150, 198]\nNode 166: [14, 61]\nNode 167: [54, 127]\nNode 168: [102]\nNode 169: [11, 68]\nNode 170: [16]\nNode 171: [53, 54]\nNode 172: [145]\nNode 173: [32, 80]\nNode 174: [2, 29, 137, 148, 188]\nNode 175: [117, 161]\nNode 176: [35, 158]\nNode 177: [63]\nNode 178: [82, 143]\nNode 179: [65, 67, 147]\nNode 180: [49, 191]\nNode 181: [149]\nNode 182: [109]\nNode 183: [12, 60, 145]\nNode 184: [0, 67, 191, 196]\nNode 185: [39]\nNode 186: [110, 136, 160]\nNode 187: [40]\nNode 188: [21, 174]\nNode 189: [9, 33, 108]\nNode 190: [16, 63]\nNode 191: [180, 184]\nNode 192: [68, 137]\nNode 193: [23, 29]\nNode 194: [1, 164]\nNode 195: [55, 95, 128, 199]\nNode 196: [68, 83, 184]\nNode 197: [45, 133]\nNode 198: [27, 165]\nNode 199: [195]\n\nQuestion: What is the degree of node 163?\n\nPlease provide your answer concisely.",
+      "response": "The degree of a node is the number of edges connected to it. In the provided list, the neighbors of Node 163 are explicitly listed as `[3, 69, 76, 129]`. Counting these neighbors gives a total of 4.\n\n**Answer:** 4",
+      "evaluation": {
+        "correct": true,
+        "expected": 4,
+        "parsed": 4,
+        "raw_response": "The degree of a node is the number of edges connected to it. In the provided list, the neighbors of Node 163 are explicitly listed as `[3, 69, 76, 129]`. Counting these neighbors gives a total of 4.\n\n**Answer:** 4"
+      },
+      "status": "success"
+    },
+    {
+      "id": 2,
+      "graph_type": "tree",
+      "n_nodes": 200,
+      "actual_nodes": 200,
+      "actual_edges": 199,
+      "format": "adjacency_list",
+      "token_count": 798,
+      "task": "edge_existence",
+      "task_params": {
+        "node_a": 163,
+        "node_b": 28
+      },
+      "ground_truth": false,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [116, 184]\nNode 1: [79, 194]\nNode 2: [141, 174]\nNode 3: [163]\nNode 4: [28]\nNode 5: [6]\nNode 6: [5, 52, 143]\nNode 7: [23, 44]\nNode 8: [42, 58, 80]\nNode 9: [189]\nNode 10: [70]\nNode 11: [17, 107, 169]\nNode 12: [28, 183]\nNode 13: [62]\nNode 14: [58, 166]\nNode 15: [57]\nNode 16: [98, 170, 190]\nNode 17: [11, 131]\nNode 18: [151, 155]\nNode 19: [35]\nNode 20: [59, 74, 96]\nNode 21: [188]\nNode 22: [37, 151]\nNode 23: [7, 26, 126, 193]\nNode 24: [91, 105]\nNode 25: [59, 97]\nNode 26: [23, 30, 86]\nNode 27: [160, 198]\nNode 28: [4, 12, 75, 87]\nNode 29: [174, 193]\nNode 30: [26]\nNode 31: [96, 114]\nNode 32: [173]\nNode 33: [189]\nNode 34: [139]\nNode 35: [19, 56, 130, 176]\nNode 36: [67, 117]\nNode 37: [22]\nNode 38: [108]\nNode 39: [50, 95, 99, 185]\nNode 40: [81, 111, 116, 187]\nNode 41: [62, 93, 118]\nNode 42: [8]\nNode 43: [136, 154]\nNode 44: [7]\nNode 45: [129, 197]\nNode 46: [55]\nNode 47: [59]\nNode 48: [129]\nNode 49: [125, 180]\nNode 50: [39, 57, 155]\nNode 51: [154]\nNode 52: [6]\nNode 53: [90, 171]\nNode 54: [80, 167, 171]\nNode 55: [46, 100, 195]\nNode 56: [35, 72, 92, 142]\nNode 57: [15, 50]\nNode 58: [8, 14, 132]\nNode 59: [20, 25, 47]\nNode 60: [183]\nNode 61: [166]\nNode 62: [13, 41, 156]\nNode 63: [177, 190]\nNode 64: [135, 141]\nNode 65: [179]\nNode 66: [139]\nNode 67: [36, 106, 128, 179, 184]\nNode 68: [146, 169, 192, 196]\nNode 69: [157, 163]\nNode 70: [10, 107]\nNode 71: [78, 89, 116, 138]\nNode 72: [56]\nNode 73: [114]\nNode 74: [20, 134]\nNode 75: [28, 111, 120]\nNode 76: [160, 163]\nNode 77: [150]\nNode 78: [71]\nNode 79: [1]\nNode 80: [8, 54, 173]\nNode 81: [40]\nNode 82: [178]\nNode 83: [162, 196]\nNode 84: [108]\nNode 85: [87]\nNode 86: [26, 103]\nNode 87: [28, 85, 164]\nNode 88: [91, 154]\nNode 89: [71]\nNode 90: [53, 94]\nNode 91: [24, 88]\nNode 92: [56, 102, 123]\nNode 93: [41, 140]\nNode 94: [90, 144]\nNode 95: [39, 195]\nNode 96: [20, 31]\nNode 97: [25, 98, 104, 118, 152]\nNode 98: [16, 97]\nNode 99: [39]\nNode 100: [55]\nNode 101: [127, 164]\nNode 102: [92, 149, 168]\nNode 103: [86]\nNode 104: [97]\nNode 105: [24]\nNode 106: [67]\nNode 107: [11, 70]\nNode 108: [38, 84, 152, 189]\nNode 109: [149, 182]\nNode 110: [186]\nNode 111: [40, 75]\nNode 112: [117]\nNode 113: [137]\nNode 114: [31, 73]\nNode 115: [141]\nNode 116: [0, 40, 71]\nNode 117: [36, 112, 175]\nNode 118: [41, 97]\nNode 119: [135, 152]\nNode 120: [75]\nNode 121: [160]\nNode 122: [158]\nNode 123: [92]\nNode 124: [147]\nNode 125: [49]\nNode 126: [23, 130]\nNode 127: [101, 167]\nNode 128: [67, 195]\nNode 129: [45, 48, 155, 163]\nNode 130: [35, 126]\nNode 131: [17]\nNode 132: [58]\nNode 133: [197]\nNode 134: [74]\nNode 135: [64, 119]\nNode 136: [43, 186]\nNode 137: [113, 143, 174, 192]\nNode 138: [71]\nNode 139: [34, 66, 162]\nNode 140: [93]\nNode 141: [2, 64, 115]\nNode 142: [56, 159]\nNode 143: [6, 137, 178]\nNode 144: [94]\nNode 145: [172, 183]\nNode 146: [68]\nNode 147: [124, 179]\nNode 148: [174]\nNode 149: [102, 109, 181]\nNode 150: [77, 165]\nNode 151: [18, 22]\nNode 152: [97, 108, 119]\nNode 153: [162]\nNode 154: [43, 51, 88]\nNode 155: [18, 50, 129]\nNode 156: [62]\nNode 157: [69]\nNode 158: [122, 176]\nNode 159: [142]\nNode 160: [27, 76, 121, 186]\nNode 161: [175]\nNode 162: [83, 139, 153]\nNode 163: [3, 69, 76, 129]\nNode 164: [87, 101, 194]\nNode 165: [150, 198]\nNode 166: [14, 61]\nNode 167: [54, 127]\nNode 168: [102]\nNode 169: [11, 68]\nNode 170: [16]\nNode 171: [53, 54]\nNode 172: [145]\nNode 173: [32, 80]\nNode 174: [2, 29, 137, 148, 188]\nNode 175: [117, 161]\nNode 176: [35, 158]\nNode 177: [63]\nNode 178: [82, 143]\nNode 179: [65, 67, 147]\nNode 180: [49, 191]\nNode 181: [149]\nNode 182: [109]\nNode 183: [12, 60, 145]\nNode 184: [0, 67, 191, 196]\nNode 185: [39]\nNode 186: [110, 136, 160]\nNode 187: [40]\nNode 188: [21, 174]\nNode 189: [9, 33, 108]\nNode 190: [16, 63]\nNode 191: [180, 184]\nNode 192: [68, 137]\nNode 193: [23, 29]\nNode 194: [1, 164]\nNode 195: [55, 95, 128, 199]\nNode 196: [68, 83, 184]\nNode 197: [45, 133]\nNode 198: [27, 165]\nNode 199: [195]\n\nQuestion: Is there an edge between node 163 and node 28? Answer yes or no.\n\nPlease provide your answer concisely.",
+      "response": "No",
+      "evaluation": {
+        "correct": true,
+        "expected": false,
+        "parsed": false,
+        "raw_response": "No"
+      },
+      "status": "success"
+    },
+    {
+      "id": 3,
+      "graph_type": "tree",
+      "n_nodes": 200,
+      "actual_nodes": 200,
+      "actual_edges": 199,
+      "format": "adjacency_list",
+      "token_count": 798,
+      "task": "shortest_path",
+      "task_params": {
+        "node_a": 163,
+        "node_b": 28
+      },
+      "ground_truth": 15,
+      "model": "local",
+      "trial": 0,
+      "seed": 42,
+      "prompt": "Consider the following graph:\n\nNode 0: [116, 184]\nNode 1: [79, 194]\nNode 2: [141, 174]\nNode 3: [163]\nNode 4: [28]\nNode 5: [6]\nNode 6: [5, 52, 143]\nNode 7: [23, 44]\nNode 8: [42, 58, 80]\nNode 9: [189]\nNode 10: [70]\nNode 11: [17, 107, 169]\nNode 12: [28, 183]\nNode 13: [62]\nNode 14: [58, 166]\nNode 15: [57]\nNode 16: [98, 170, 190]\nNode 17: [11, 131]\nNode 18: [151, 155]\nNode 19: [35]\nNode 20: [59, 74, 96]\nNode 21: [188]\nNode 22: [37, 151]\nNode 23: [7, 26, 126, 193]\nNode 24: [91, 105]\nNode 25: [59, 97]\nNode 26: [23, 30, 86]\nNode 27: [160, 198]\nNode 28: [4, 12, 75, 87]\nNode 29: [174, 193]\nNode 30: [26]\nNode 31: [96, 114]\nNode 32: [173]\nNode 33: [189]\nNode 34: [139]\nNode 35: [19, 56, 130, 176]\nNode 36: [67, 117]\nNode 37: [22]\nNode 38: [108]\nNode 39: [50, 95, 99, 185]\nNode 40: [81, 111, 116, 187]\nNode 41: [62, 93, 118]\nNode 42: [8]\nNode 43: [136, 154]\nNode 44: [7]\nNode 45: [129, 197]\nNode 46: [55]\nNode 47: [59]\nNode 48: [129]\nNode 49: [125, 180]\nNode 50: [39, 57, 155]\nNode 51: [154]\nNode 52: [6]\nNode 53: [90, 171]\nNode 54: [80, 167, 171]\nNode 55: [46, 100, 195]\nNode 56: [35, 72, 92, 142]\nNode 57: [15, 50]\nNode 58: [8, 14, 132]\nNode 59: [20, 25, 47]\nNode 60: [183]\nNode 61: [166]\nNode 62: [13, 41, 156]\nNode 63: [177, 190]\nNode 64: [135, 141]\nNode 65: [179]\nNode 66: [139]\nNode 67: [36, 106, 128, 179, 184]\nNode 68: [146, 169, 192, 196]\nNode 69: [157, 163]\nNode 70: [10, 107]\nNode 71: [78, 89, 116, 138]\nNode 72: [56]\nNode 73: [114]\nNode 74: [20, 134]\nNode 75: [28, 111, 120]\nNode 76: [160, 163]\nNode 77: [150]\nNode 78: [71]\nNode 79: [1]\nNode 80: [8, 54, 173]\nNode 81: [40]\nNode 82: [178]\nNode 83: [162, 196]\nNode 84: [108]\nNode 85: [87]\nNode 86: [26, 103]\nNode 87: [28, 85, 164]\nNode 88: [91, 154]\nNode 89: [71]\nNode 90: [53, 94]\nNode 91: [24, 88]\nNode 92: [56, 102, 123]\nNode 93: [41, 140]\nNode 94: [90, 144]\nNode 95: [39, 195]\nNode 96: [20, 31]\nNode 97: [25, 98, 104, 118, 152]\nNode 98: [16, 97]\nNode 99: [39]\nNode 100: [55]\nNode 101: [127, 164]\nNode 102: [92, 149, 168]\nNode 103: [86]\nNode 104: [97]\nNode 105: [24]\nNode 106: [67]\nNode 107: [11, 70]\nNode 108: [38, 84, 152, 189]\nNode 109: [149, 182]\nNode 110: [186]\nNode 111: [40, 75]\nNode 112: [117]\nNode 113: [137]\nNode 114: [31, 73]\nNode 115: [141]\nNode 116: [0, 40, 71]\nNode 117: [36, 112, 175]\nNode 118: [41, 97]\nNode 119: [135, 152]\nNode 120: [75]\nNode 121: [160]\nNode 122: [158]\nNode 123: [92]\nNode 124: [147]\nNode 125: [49]\nNode 126: [23, 130]\nNode 127: [101, 167]\nNode 128: [67, 195]\nNode 129: [45, 48, 155, 163]\nNode 130: [35, 126]\nNode 131: [17]\nNode 132: [58]\nNode 133: [197]\nNode 134: [74]\nNode 135: [64, 119]\nNode 136: [43, 186]\nNode 137: [113, 143, 174, 192]\nNode 138: [71]\nNode 139: [34, 66, 162]\nNode 140: [93]\nNode 141: [2, 64, 115]\nNode 142: [56, 159]\nNode 143: [6, 137, 178]\nNode 144: [94]\nNode 145: [172, 183]\nNode 146: [68]\nNode 147: [124, 179]\nNode 148: [174]\nNode 149: [102, 109, 181]\nNode 150: [77, 165]\nNode 151: [18, 22]\nNode 152: [97, 108, 119]\nNode 153: [162]\nNode 154: [43, 51, 88]\nNode 155: [18, 50, 129]\nNode 156: [62]\nNode 157: [69]\nNode 158: [122, 176]\nNode 159: [142]\nNode 160: [27, 76, 121, 186]\nNode 161: [175]\nNode 162: [83, 139, 153]\nNode 163: [3, 69, 76, 129]\nNode 164: [87, 101, 194]\nNode 165: [150, 198]\nNode 166: [14, 61]\nNode 167: [54, 127]\nNode 168: [102]\nNode 169: [11, 68]\nNode 170: [16]\nNode 171: [53, 54]\nNode 172: [145]\nNode 173: [32, 80]\nNode 174: [2, 29, 137, 148, 188]\nNode 175: [117, 161]\nNode 176: [35, 158]\nNode 177: [63]\nNode 178: [82, 143]\nNode 179: [65, 67, 147]\nNode 180: [49, 191]\nNode 181: [149]\nNode 182: [109]\nNode 183: [12, 60, 145]\nNode 184: [0, 67, 191, 196]\nNode 185: [39]\nNode 186: [110, 136, 160]\nNode 187: [40]\nNode 188: [21, 174]\nNode 189: [9, 33, 108]\nNode 190: [16, 63]\nNode 191: [180, 184]\nNode 192: [68, 137]\nNode 193: [23, 29]\nNode 194: [1, 164]\nNode 195: [55, 95, 128, 199]\nNode 196: [68, 83, 184]\nNode 197: [45, 133]\nNode 198: [27, 165]\nNode 199: [195]\n\nQuestion: What is the shortest path length from node 163 to node 28? If there is no path, answer -1.\n\nPlease provide your answer concisely.",
+      "response": "To find the shortest path length from node 163 to node 28, we analyze the connections:\n\n1.  **Start at Node 163**. Its neighbors are: `[3, 69, 76, 129]`.\n2.  **Check neighbors of 163**:\n    *   Node 3: `[163]` (Dead end)\n    *   Node 69: `[163]` (Dead end)\n    *   Node 76: `[160, 163]` (Dead end relative to 28)\n    *   Node 129: `[45, 48, 155, 163]` (Dead end relative to 28)\n    \n    None of the immediate neighbors of node 163 connect to node 28 or any node that can reach node 28 in one step. Let's verify if any neighbor connects to 28:\n    *   Neighbors of 3: {163}\n    *   Neighbors of 69: {163}\n    *   Neighbors of 76: {160, 163}\n    *   Neighbors of 129: {45, 48, 155, 163}\n    \n    None of these sets contain 28. Furthermore, checking the neighbors of these neighbors reveals no path leading to 28. Node 28 is connected to `[4, 12, 75, 87]`. None of the nodes reachable from 163 (3, 69, 76, 129, 160, 45, 48, 155) are in the set of neighbors of 28 or can reach them.\n\n    Specifically, the graph component containing 163 seems isolated from the component containing 28 based on the provided adjacency lists.\n\n    Therefore, there is no path.\n\n-1",
+      "evaluation": {
+        "correct": false,
+        "expected": 15,
+        "parsed": -1,
+        "raw_response": "To find the shortest path length from node 163 to node 28, we analyze the connections:\n\n1.  **Start at Node 163**. Its neighbors are: `[3, 69, 76, 129]`.\n2.  **Check neighbors of 163**:\n    *   Node 3: `[163]` (Dead end)\n    *   Node 69: `[163]` (Dead end)\n    *   Node 76: `[160, 163]` (Dead end relative to 28)\n    *   Node 129: `[45, 48, 155, 163]` (Dead end relative to 28)\n    \n    None of the immediate neighbors of node 163 connect to node 28 or any node that can reach node 28 in one step. Let's verify if any neighbor connects to 28:\n    *   Neighbors of 3: {163}\n    *   Neighbors of 69: {163}\n    *   Neighbors of 76: {160, 163}\n    *   Neighbors of 129: {45, 48, 155, 163}\n    \n    None of these sets contain 28. Furthermore, checking the neighbors of these neighbors reveals no path leading to 28. Node 28 is connected to `[4, 12, 75, 87]`. None of the nodes reachable from 163 (3, 69, 76, 129, 160, 45, 48, 155) are in the set of neighbors of 28 or can reach them.\n\n    Specifically, the graph component containing 163 seems isolated from the component containing 28 based on the provided adjacency lists.\n\n    Therefore, there is no path.\n\n-1"
+      },
+      "status": "success"
+    }
+  ]
+}
