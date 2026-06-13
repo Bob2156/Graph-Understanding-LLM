@@ -1,0 +1,65 @@
+DRAFT FOR GOOGLE DOC — Data Dump Section
+==========================================
+(Copy-paste into the Data Dump section of the Google Doc. Format headings/bold in Google Docs as needed.)
+
+
+Experimental Verification: Shortest Path Fails First
+
+Background
+
+Wang et al. (2023) introduced NLGraph, a benchmark of 29,370 graph reasoning problems, published as a spotlight paper at NeurIPS 2023. Among their key findings: when LLMs are given text-serialized graphs, shortest path is among the hardest tasks. Performance on shortest path degrades significantly as graph size increases, even when simpler tasks like connectivity and edge existence remain accurate. Fatemi et al. (2024, ICLR) confirmed this with the GraphQA benchmark, showing that multi-hop reasoning tasks break down because LLMs are limited to approximately 2-3 hops of reasoning before losing track of graph structure.
+
+We designed an experiment to verify whether this holds for Qwen 3.5 9B, a recent open-source model, using our own benchmark framework.
+
+Setup
+
+Model: Qwen 3.5 9B (quantized, running locally via LM Studio)
+Graph type: Erdos-Renyi random graphs (p=0.3) and random trees
+Serialization: Adjacency list format
+Context: 32,000 tokens
+Temperature: 0 (deterministic)
+Tasks tested: node degree, edge existence, shortest path, connectivity, cycle detection
+
+Each graph was generated with a fixed random seed for reproducibility. The model received the full graph as an adjacency list followed by a specific question about the graph.
+
+Results
+
+10 nodes:  5/5 tasks correct (100%)
+20 nodes:  5/5 tasks correct (100%)
+50 nodes:  5/5 tasks correct (100%)
+100 nodes: 4/5 tasks correct (80%) — shortest path FAILED
+200 nodes (tree): 2/3 tasks correct — shortest path FAILED
+
+All other tasks (node degree, edge existence, connectivity, cycle detection) remained correct up to and including 200 nodes. Shortest path was the only task to fail, and it was the first to fail, consistent with the NLGraph findings.
+
+Failure Mode Analysis
+
+At 100 nodes (Erdos-Renyi, ~1477 edges), the model was asked the shortest path from node 34 to node 6. The correct answer was 2 (a two-hop path). The model answered 1, claiming a direct edge existed between nodes 34 and 6. This edge does not exist in the graph. The model hallucinated a connection — it could not reliably track which nodes appear in which adjacency list when the list is long enough.
+
+At 200 nodes (tree, 199 edges), the model was asked the shortest path from node 163 to node 28. The correct answer was 15. The model performed a correct BFS-like traversal for exactly 2 hops outward from node 163, found that node 28 was not within 2 hops, and then concluded: "the graph component containing 163 seems isolated from the component containing 28." It returned -1, claiming no path exists. In a tree, all nodes are connected by definition. The model gave up after 2 hops and declared the graph disconnected rather than continuing the traversal.
+
+This confirms the finding from Fatemi et al. (2024) that LLMs are limited to approximately 2-3 hops of reasoning on graph structures.
+
+Why Shortest Path Is Hardest
+
+Lookup tasks like node degree and edge existence only require the model to find one specific node's entry in the adjacency list and read it. These are essentially retrieval tasks — the answer is explicitly stated in the input.
+
+Shortest path requires the model to perform multi-hop traversal: start at node A, enumerate its neighbors, then enumerate each neighbor's neighbors, and so on until reaching node B, while tracking which nodes have been visited. This requires:
+1. Maintaining state across multiple reasoning steps
+2. Accurately cross-referencing multiple entries in the adjacency list
+3. Not hallucinating edges that do not exist
+4. Not abandoning the search prematurely
+
+At scale, all four of these requirements break down.
+
+Implications
+
+These results confirm the "scaling wall" described in the literature: current LLMs can handle graph reasoning on small graphs (under ~50 nodes) but begin failing on tasks requiring global reasoning as graphs approach 100+ nodes. The failure is task-dependent — local lookup tasks remain robust while tasks requiring multi-hop traversal degrade first. This is consistent with NLGraph (Wang et al., 2023) and GraphQA (Fatemi et al., 2024).
+
+Next steps: test whether different serialization formats (edge list, natural language) or chain-of-thought prompting can push the failure boundary higher.
+
+
+Sources to list:
+- Wang et al. "Can Language Models Solve Graph Problems in Natural Language?" NeurIPS 2023. arXiv:2305.10037
+- Fatemi et al. "Talk like a Graph: Encoding Graphs for Large Language Models." ICLR 2024. arXiv:2310.04560
+- Yuan et al. "GraCoRe: Evaluating Graph Comprehension and Complex Reasoning in LLMs." COLING 2025. arXiv:2407.02936

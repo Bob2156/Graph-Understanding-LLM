@@ -1,0 +1,48 @@
+Benchmark Framework Description
+================================
+
+We built a custom benchmark framework in Python to systematically test LLM graph reasoning. The framework has four components:
+
+1. Graph Generator
+   Generates graphs of configurable size and type using NetworkX. Supported types: Erdos-Renyi random graphs, Barabasi-Albert (scale-free), Watts-Strogatz (small-world), complete graphs, random trees, grids, bipartite, paths, and cycles. Each graph is generated with a fixed random seed for reproducibility.
+
+2. Graph Serializer
+   Converts graphs to text in multiple formats:
+   - Adjacency list: "Node 0: [1, 3, 5]"
+   - Edge list: "(0, 1), (0, 3), (1, 2)"
+   - Natural language: "Node 0 is connected to Node 1, Node 3, and Node 5."
+
+3. Task Suite (10 tasks with ground-truth solvers)
+   Each task has a prompt generator, a ground-truth solver (using NetworkX), and an answer evaluator.
+
+   Task                 | Type    | What it tests
+   ---------------------|---------|--------------------------------------
+   Node degree          | Local   | Count neighbors of a given node
+   Edge existence       | Local   | Is there an edge between two nodes?
+   Neighbor listing     | Local   | List all neighbors of a node
+   Node count           | Global  | How many nodes in the graph?
+   Edge count           | Global  | How many edges in the graph?
+   Connectivity         | Global  | Are two nodes connected?
+   Shortest path        | Global  | Shortest path length between two nodes
+   Cycle detection      | Global  | Does the graph contain a cycle?
+   Triangle counting    | Global  | How many triangles in the graph?
+   Graph diameter       | Global  | What is the diameter?
+
+4. Benchmark Runner
+   Sends the serialized graph + question to the LLM, parses the response, compares against ground truth, and logs results to JSON. Supports OpenAI, Anthropic, Google Gemini, and local models (via LM Studio). All calls use temperature 0 for deterministic output.
+
+Example prompt sent to the model:
+
+   "Consider the following undirected graph represented as an adjacency list:
+    Node 0: [2, 3, 5, 9]
+    Node 1: [2, 3, 5, 6, 9]
+    Node 2: [0, 1, 5, 9]
+    ...
+    Node 9: [0, 1, 2, 6, 7, 8]
+
+    Question: What is the shortest path length from Node 1 to Node 0?
+    If no path exists, answer -1."
+
+The model's response is parsed for the final numerical or yes/no answer and compared against the NetworkX-computed ground truth.
+
+Code: github.com/Bob2156/Graph-Understanding-LLM (private)
